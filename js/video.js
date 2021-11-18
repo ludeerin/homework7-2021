@@ -24,7 +24,7 @@ document.querySelector("#slower").addEventListener("click",function() {
 });
 
 document.querySelector("#faster").addEventListener("click", function (){
-	speed = speed + speed*0.095;
+	speed = speed + speed*0.05;
 	video.playbackRate = speed;
 	console.log("Current speed is " + speed);
 });
@@ -62,12 +62,12 @@ function() {
 
 var slider = document.getElementById("slider");
 var output = document.getElementById("volume");
-output.innerHTML = slider.value; // Display the default slider value
+output.innerHTML = slider.value + "%"; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
 x  = this.value;
-output.innerHTML = x;
+output.innerHTML = x + "%";
 video.volume = (x/100)
 }
 
