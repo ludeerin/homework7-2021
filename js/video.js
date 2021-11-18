@@ -38,10 +38,14 @@ document.querySelector("#skip").addEventListener("click", function (){
 
 var muteButton = document.querySelector("#mute")
 current_volume = video.volume
+
+
 document.querySelector("#mute").addEventListener("click", function(){
 	if (muteButton.innerHTML === "Mute") {
 		muteButton.innerHTML = "Unmute"
 		video.volume = 0;
+		// output.innerHTML = "0%";
+
 	} else {
 		muteButton.innerHTML = "Mute";
 		video.volume = current_volume
