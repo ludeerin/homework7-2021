@@ -5,8 +5,10 @@ window.addEventListener("load", function() {
 	console.log("Good job opening the window")
 
 });
-
+var slider = document.getElementById("slider");
+var output = document.getElementById("volume");
 document.querySelector("#play").addEventListener("click", function() {
+	output.innerHTML = slider.value + "%";
 	console.log("Play Video");
 	video.play();
 });
@@ -31,9 +33,14 @@ document.querySelector("#faster").addEventListener("click", function (){
 
 let current = video.currentTime
 document.querySelector("#skip").addEventListener("click", function (){
-	let new_time = current + 15;
-	video.currentTime += new_time
-	console.log("Current location is " + video.currentTime + " seconds.");
+	console.log(video.currentTime);
+	video.currentTime += 15;
+
+	if((video.currentTime >= video.duration)){
+		video.currentTime=0;
+		console.log(video.currentTime);
+	}
+	
 });
 
 var muteButton = document.querySelector("#mute")
@@ -44,11 +51,12 @@ document.querySelector("#mute").addEventListener("click", function(){
 	if (muteButton.innerHTML === "Mute") {
 		muteButton.innerHTML = "Unmute"
 		video.volume = 0;
-		// output.innerHTML = "0%";
+		output.innerHTML = video.volume
 
 	} else {
 		muteButton.innerHTML = "Mute";
 		video.volume = current_volume
+		output.innerHTML = video.volume*100 + "%"
 	}
 });
 
@@ -64,9 +72,7 @@ function() {
 
 
 
-var slider = document.getElementById("slider");
-var output = document.getElementById("volume");
-output.innerHTML = slider.value + "%"; // Display the default slider value
+ // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
